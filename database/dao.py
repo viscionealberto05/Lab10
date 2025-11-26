@@ -21,8 +21,8 @@ class DAO:
 
             for row in cursor:
                 result.append(Hub(row["id"],
-                                  row["nome"],
                                   row["codice"],
+                                  row["nome"],
                                   row["citta"],
                                   row["stato"],
                                   row["latitudine"],

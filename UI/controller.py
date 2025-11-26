@@ -17,4 +17,21 @@ class Controller:
         * Lista di Tratte che superano il costo indicato come soglia
         """
 
+        self._view.lista_visualizzazione.controls.clear()
+        self._view.page.update()
+        if float(self._view.guadagno_medio_minimo.value) >= 0:
 
+            tratte = self._model.costruisci_grafo(float(self._view.guadagno_medio_minimo.value))
+            num_nodi = self._model.get_num_nodes()
+            num_tratte_valide = self._model.get_num_edges()
+
+
+            self._view.lista_visualizzazione.controls.append(ft.Text(f"Numero di hub: {num_nodi}"))
+            self._view.lista_visualizzazione.controls.append(ft.Text(f"Numero di tratte: {num_tratte_valide}"))
+            for tratta in tratte:
+                self._view.lista_visualizzazione.controls.append(ft.Text(f"{tratta[0]} - {tratta[1]}, guadagno medio tratta: {tratta[2]}"))
+
+            self._view.lista_visualizzazione.update()
+            self._view.page.update()
+        else:
+            self._view.alert.show_alert("Inserisci un valore corretto")
