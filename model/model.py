@@ -139,6 +139,7 @@ class Model:
                 if ((tratta_nuova.id_hub_origine == idO and tratta_nuova.id_hub_destinazione == idD) or
                         (tratta_nuova.id_hub_origine == idD and tratta_nuova.id_hub_destinazione == idO)):
                     tratta_nuova.valore_tratta += tratta.valore_tratta
+                    tratta_nuova.valore_tratta = tratta_nuova.valore_tratta/2
                     trovata = True
                     break
 
